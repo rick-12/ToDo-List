@@ -45,10 +45,10 @@
               </div>
             </div>
             <input type="hidden" name="id" value="<%= listItem._id %>">
-            <button type="submit" class="btn btn-danger delete-task" formaction="/delete">Delete</button>
-            <!-- <div class="delete-task" data-bs-theme="dark">
-                <button type="submit" class="btn-close" aria-label="Close"></button>
-              </div> -->
+            <!-- <button type="submit" class="btn btn-danger delete-task" formaction="/delete">Delete</button> -->
+            <div class="delete-task" data-bs-theme="dark">
+                <button type="submit" class="btn-close" aria-label="Close" formaction="/delete"></button>
+              </div>
           </div>
         </form>
         <% }) %>
