@@ -1,0 +1,57 @@
+<%- include('partials/header.ejs') %>
+  <div class="main flex-column">
+    <h1 id="title">
+      <%= title %>
+    </h1>
+    <form class="new-item-form flex" action="/" method="post">
+      <textarea id="new-task-input" type="text" name="newItem" placeholder="What have you planned?" rows="1"
+        oninput="this.style.height = '';this.style.height = this.scrollHeight + 'px'"></textarea>
+      <input id="new-task-submit" type="submit" value="Add">
+    </form>
+    <div class="list">
+      <% listItems.forEach(listItem=> { %>
+        <form class="flex item" method="post">
+          <p class="item-content  my-3">
+            <%= listItem.name%>
+          </p>
+          <div class="actions flex">
+            <!-- <input class="edit-task" type="submit" formaction="/edit" value="Edit"> -->
+            <!-- <button type="button" class="btn btn-success edit-task" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Edit</button> -->
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit your task</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <form action="/edit" method="post">
+                    <div class="modal-body">
+                      <div class="mb-3">
+                        <label for="message-text" class="col-form-label">New task:</label>
+                        <textarea class="form-control" id="message-text" name="modifiedItem" value="this.value"
+                          oninput="this.style.height = '';this.style.height = this.scrollHeight + 'px'"></textarea>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <input type="hidden" name="id" value="<%= listItem._id %>">
+                      <button type="submit" class="btn btn-success" data-bs-dismiss="modal"
+                        formaction="/edit">Save</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <input type="hidden" name="id" value="<%= listItem._id %>">
+            <button type="submit" class="btn btn-danger delete-task" formaction="/delete">Delete</button>
+            <!-- <div class="delete-task" data-bs-theme="dark">
+                <button type="submit" class="btn-close" aria-label="Close"></button>
+              </div> -->
+          </div>
+        </form>
+        <% }) %>
+    </div>
+  </div>
+  <%- include('partials/footer.ejs') %>
