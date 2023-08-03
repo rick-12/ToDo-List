@@ -25,15 +25,15 @@ async function main() {
   const Item = mongoose.model("Item", itemsSchema);
 
   const item1 = new Item({
-    name: "Buy Food"
+    name: "Discuss on the project"
   });
 
   const item2 = new Item({
-    name: "Cook Food"
+    name: "Wash clothes"
   });
 
   const item3 = new Item({
-    name: "Eat Food"
+    name: "Watch Cricket"
   });
 
   const defaultItems = [item1, item2, item3];

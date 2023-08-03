@@ -175,18 +175,14 @@ input, button {
 } */
 
 .actions {
-  width: 12vw;
+  width: 8vw;
   justify-content: space-between;
-  position: relative;
-  right: 2%;
+  /* position: relative;
+  right: 2%; */
 }
 
 .edit-task {
   background-color: green;
-}
-
-.delete-task {
-  background-color: red;
 }
 
 .edit-task, .delete-task {
